@@ -14,11 +14,20 @@ $(document).ready(function(){
 // }
 
 $(".saveBtn").click(function() {
-    var taskText = $(this).prev().val();
+    var taskText = $(this)
+    .prev()
+    .val();
+
+    var index = $(this)
+    .closest(".text-input")
+    .index();
+
     task.push({
-        text: taskText
-    })
-    console.log(taskText);
+        text: taskText,
+        index: index
+    });
+    
+
     localStorage.setItem("tasks", JSON.stringify(task));
 });
 
@@ -27,19 +36,14 @@ $(".saveBtn").click(function() {
 //         localStorage.setItem("tasks", JSON.stringify(task));
 //     };
 
-
-// var loadTask = function() {
-
-// }
-
 // var checkTime = function() {
 //     moment(currentTime).isAfter(currentTime) {
 //         $(
 //     }
 
 // }
-var loadTasks = function() {
-    task = JSON.parse(localStorage.getItem("tasks"));
-}
+// var loadTasks = function() {
+//     task = JSON.parse(localStorage.getItem("tasks"));
+// }
 
-loadTasks();
+// loadTasks()
