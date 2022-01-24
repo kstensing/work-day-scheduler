@@ -13,22 +13,22 @@ $(document).ready(function(){
 //     $("#text-input").append(taskP);
 // }
 
-$(".saveBtn").click(function() {
-    var taskText = $(this)
-    .prev()
+
+$('.saveBtn').on('click', function() {
+    // get nearby values using the description class you made of the text area
+    var value = $(this) 
+    .prev()    
     .val();
+     console.log(value);
+    //get the current this value of time from the div id of the parent container and set it to this variable 
+    var time = $(this)
+    .closest("button")
+        .val()
+        .attr('id');
 
-    var index = $(this)
-    .closest(".text-input")
-    .index();
-
-    task.push({
-        text: taskText,
-        index: index
-    });
-    
-
-    localStorage.setItem("tasks", JSON.stringify(task));
+    console.log(time);
+     // save in localStorage
+    // localStorage.setItem(time, value);
 });
 
 // var saveTask = function() {
