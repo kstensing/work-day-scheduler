@@ -22,14 +22,22 @@ $('.saveBtn').on('click', function() {
 
 
 var checkTime = function() {
-    var hour = $("[data-time]")
+    for (var i = 9; i < 18; i++) {
     
-    if (moment().isAfter(hour)) {
-        $("[data-time]").siblings("textarea").addClass("past");
-    };
+        var hour = $("[data-time="+i+"]")
+        var time = moment().set("hour", i)
+
+        if (moment().isAfter(time, "hour")) {
+            $(hour).siblings("textarea").addClass("past");
+        } else if (moment().isSame(time, "hour")) {
+            $(hour).siblings("textarea").addClass("present");
+        } else if (moment().isBefore(time, "hour")) {
+            $(hour).siblings("textarea").addClass("future");
+        };
+    }
 };
 
-  checkTime()
+checkTime()
 
 var loadTasks = function() {
     for (var i = 9; i < 18; i++) {
