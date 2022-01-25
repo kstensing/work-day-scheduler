@@ -21,14 +21,12 @@ $('.saveBtn').on('click', function() {
     .val();
      console.log(value);
     //get the current this value of time from the div id of the parent container and set it to this variable 
-    var time = $(this)
-    .closest("button")
-        .val()
-        .attr('id');
+    var time = $(this).siblings("div").data("time")
+
 
     console.log(time);
      // save in localStorage
-    // localStorage.setItem(time, value);
+    localStorage.setItem(time, value);
 });
 
 // var saveTask = function() {
@@ -42,8 +40,11 @@ $('.saveBtn').on('click', function() {
 //     }
 
 // }
-// var loadTasks = function() {
-//     task = JSON.parse(localStorage.getItem("tasks"));
-// }
+var loadTasks = function() {
+    for (var i = 9; i < 18; i++) {
+//$(`[data-time=${i}]`)
+   $("[data-time="+i+"]").siblings("textarea").val(localStorage.getItem(i))
+    };
+};
 
-// loadTasks()
+loadTasks()
