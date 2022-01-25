@@ -21,12 +21,16 @@ $('.saveBtn').on('click', function() {
 });
 
 
-// var checkTime = function() {
-//     moment(currentTime).isAfter(currentTime) {
-//         $(
-//     }
+var checkTime = function() {
+    var hour = $("[data-time]")
+    
+    if (moment().isAfter(hour)) {
+        $("[data-time]").siblings("textarea").addClass("past");
+    };
+};
 
-// }
+  checkTime()
+
 var loadTasks = function() {
     for (var i = 9; i < 18; i++) {
 //$(`[data-time=${i}]`)
