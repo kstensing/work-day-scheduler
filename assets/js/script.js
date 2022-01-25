@@ -1,18 +1,17 @@
 var currentTime = moment().format('MMMM Do YYYY');
-var task = [];
-
-
+//load the current day when the document is ready
 $(document).ready(function(){
     $("#currentDay").text(currentTime);        
 });
 
+// obtain the value in textarea and send to local storage
 $('.saveBtn').on('click', function() {
-    // get nearby values using the description class you made of the text area
+    // getting the value of the previous element to the saveBtn
     var value = $(this) 
     .prev()    
     .val();
      console.log(value);
-    //get the current this value of time from the div id of the parent container and set it to this variable 
+    // getting the data-time attribute from the div sibling element
     var time = $(this).siblings("div").data("time")
 
     console.log(time);
@@ -20,7 +19,7 @@ $('.saveBtn').on('click', function() {
     localStorage.setItem(time, value);
 });
 
-
+// set the class depending on if the data-time has passed, is present, or future
 var checkTime = function() {
     for (var i = 9; i < 18; i++) {
     
@@ -37,13 +36,16 @@ var checkTime = function() {
     }
 };
 
-checkTime()
-
+// obtaining the local storage info and adding it to the page
 var loadTasks = function() {
     for (var i = 9; i < 18; i++) {
-//$(`[data-time=${i}]`)
    $("[data-time="+i+"]").siblings("textarea").val(localStorage.getItem(i))
     };
 };
 
 loadTasks()
+
+// running the check time function every 5 seconds to ensure the backgrounds update appropriately
+setInterval(function() {
+    checkTime();
+}, 5000);
