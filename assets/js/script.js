@@ -6,14 +6,6 @@ $(document).ready(function(){
     $("#currentDay").text(currentTime);        
 });
 
-// var createTask = function(taskText) {
-//     var taskP = $("<p>").addClass("task")
-//     .text(taskText);
-
-//     $("#text-input").append(taskP);
-// }
-
-
 $('.saveBtn').on('click', function() {
     // get nearby values using the description class you made of the text area
     var value = $(this) 
@@ -23,16 +15,11 @@ $('.saveBtn').on('click', function() {
     //get the current this value of time from the div id of the parent container and set it to this variable 
     var time = $(this).siblings("div").data("time")
 
-
     console.log(time);
      // save in localStorage
     localStorage.setItem(time, value);
 });
 
-// var saveTask = function() {
-//     $(".saveBtn").click() 
-//         localStorage.setItem("tasks", JSON.stringify(task));
-//     };
 
 // var checkTime = function() {
 //     moment(currentTime).isAfter(currentTime) {
